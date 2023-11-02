@@ -1,5 +1,6 @@
 package com.example.gestorjuegos.controllers;
 
+import com.example.gestorjuegos.App;
 import com.example.gestorjuegos.Session;
 import com.example.gestorjuegos.domain.HibernateUtil;
 import com.example.gestorjuegos.domain.usuario.User;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,6 +53,11 @@ public class LoginController implements Initializable {
 
                 Session.setCurrentUser(u);
                 /*guardar usuario en sesion e ir a la proxima ventana*/
+                try {
+                    App.changeScene("main-view.fxml", "Login");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         }
